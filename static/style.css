@@ -1,0 +1,103 @@
+body {
+    font-family: Arial;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+h1 {
+    background: linear-gradient(to right, #ff00b7, #ff5722);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.menu-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.food-card {
+    width: 200px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.food-card img {
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+}
+
+.selected {
+    border: 2px solid green;
+}
+
+.disabled {
+    filter: blur(2px);
+    opacity: 0.6;
+}
+
+.count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: green;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.nav-buttons {
+    margin: 20px;
+}
+
+.summary-container, .bill-container {
+    width: 600px;
+    background: white;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #5500ff;
+    color: white;
+}
+
+td, th {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.thank-you {
+    font-size: 18px;
+    color: green;
+    margin-top: 20px;
+}
+.summary-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.back-btn {
+    background: #9e9e9e;
+}
+
+.back-btn:hover {
+    background: #7e7e7e;
+}
+.image-wrapper {
+    position: relative;
+}
+

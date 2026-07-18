@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Summary</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="summary-container">
+
+    <h1 class="summary-title">Order Summary</h1>
+
+    {% if items %}
+    <table class="summary-table">
+        <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Remove</th>
+        </tr>
+
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.qty }}</td>
+            <td>₹{{ item.price }}</td>
+            <td>₹{{ item.amount }}</td>
+            <td>
+                <a href="/remove/{{ item.id }}" title="Remove Item">❌</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+        <tr class="summary-total">
+            <td colspan="3"><strong>Total</strong></td>
+            <td colspan="2"><strong>₹{{ total }}</strong></td>
+        </tr>
+    </table>
+
+    <!-- 🔘 BUTTONS -->
+    <div class="summary-buttons">
+
+        <a href="/">
+            <button class="back-btn">⬅ Back to Menu</button>
+        </a>
+
+        <a href="/bill">
+            <button class="order-btn">Confirm Order ➜</button>
+        </a>
+
+    </div>
+
+    {% else %}
+    <p>No items selected.</p>
+    <a href="/">
+        <button class="back-btn">Back to Menu</button>
+    </a>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

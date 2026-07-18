@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final Bill</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="bill-container">
+<h1>Royal Spice Hotel</h1>
+<p>Final Bill</p>
+
+<table class="bill-table">
+<tr>
+    <th>Item</th>
+    <th>Qty</th>
+    <th>Amount</th>
+</tr>
+
+{% for name, qty, amount in items %}
+<tr>
+    <td>{{ name }}</td>
+    <td>{{ qty }}</td>
+    <td>₹{{ amount }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<p>Subtotal: ₹{{ subtotal }}</p>
+<p>Tax (5%): ₹{{ tax }}</p>
+<h3>Total: ₹{{ total }}</h3>
+
+<p class="thank-you">Thank you! Visit Again 😊</p>
+
+<a href="/"><button>Back to Menu</button></a>
+</div>
+
+</body>
+</html>

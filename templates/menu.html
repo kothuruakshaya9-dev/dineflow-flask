@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Royal Spice Hotel – Menu</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1 class="welcome-title">✨ Welcome to Royal Spice Hotel ✨</h1>
+<h2 class="category-title">{{ category }}</h2>
+
+<!-- 🍽 MENU GRID -->
+<div class="menu-grid">
+{% for id, item in menu.items() %}
+    {% if item.get('category') == category %}
+    <div class="food-card
+         {% if id in cart %}selected{% endif %}
+         {% if not item.get('available', True) %}disabled{% endif %}">
+
+        <!-- 🖼 IMAGE WITH OUT OF STOCK OVERLAY -->
+        <div class="image-wrapper">
+            <img src="/static/images/{{ item.image }}"
+                 alt="{{ item.name }}"
+                 class="{% if not item.get('available', True) %}disabled{% endif %}">
+
+            {% if not item.get('available', True) %}
+                <div class="out-stock">OUT OF STOCK</div>
+            {% endif %}
+        </div>
+
+        <!-- 📝 FOOD DETAILS -->
+        <h4 class="food-name">{{ item.name }}</h4>
+        <p class="food-price">₹{{ item.price }}</p>
+
+        <!-- ➕➖ ADD / REMOVE -->
+        {% if item.get('available', True) %}
+        <form method="POST" class="qty-form">
+            <input type="hidden" name="item_id" value="{{ id }}">
+            <button name="action" value="remove" class="qty-btn">−</button>
+            <button name="action" value="add" class="qty-btn">+</button>
+        </form>
+        {% endif %}
+
+        <!-- 🔢 QUANTITY BADGE -->
+        {% if id in cart %}
+            <span class="count">{{ cart[id] }}</span>
+        {% endif %}
+    </div>
+    {% endif %}
+{% endfor %}
+</div>
+
+<!-- ⬅➡ NAVIGATION -->
+<div class="nav-buttons">
+    {% if has_prev %}
+        <a href="/?cat={{ cat_index - 1 }}">
+            <button class="nav-btn">⬅ Previous</button>
+        </a>
+    {% endif %}
+
+    {% if has_next %}
+        <a href="/?cat={{ cat_index + 1 }}">
+            <button class="nav-btn">Next ➡</button>
+        </a>
+    {% else %}
+        <a href="/summary">
+            <button class="order-btn">Proceed to Order ➜</button>
+        </a>
+    {% endif %}
+</div>
+
+</body>
+</html>

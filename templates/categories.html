@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categories</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>Select Category</h2>
+
+<ul>
+{% for cat in categories %}
+    <li>
+        <a href="/menu?cat={{ loop.index0 }}">
+            {{ cat }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+<a href="/">
+    <button>⬅ Back</button>
+</a>
+
+</body>
+</html>
